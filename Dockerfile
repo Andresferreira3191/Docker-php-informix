@@ -53,6 +53,7 @@ ENV PATH $INFORMIXDIR/bin:$PATH
 
 COPY scripts/PDO_INFORMIX-1.3.3.tgz /tmp
 COPY scripts/install-informixpdo.sh /tmp
+RUN sudo ln -s /usr/include/php/20170718/ext /usr/include/php/ext
 RUN sudo sh /tmp/install-informixpdo.sh
 
 #Informix environment variables for Apache
