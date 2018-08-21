@@ -56,10 +56,13 @@ COPY scripts/install-informixpdo.sh /tmp
 RUN sudo ln -s /usr/include/php/20170718/ext /usr/include/php/ext
 RUN sudo sh /tmp/install-informixpdo.sh
 
+
+CMD rm -r $TMPDIR/*
 #Informix environment variables for Apache
 COPY scripts/envvars.sh /tmp
 RUN sudo sh /tmp/envvars.sh
-RUN echo "extension=pdo_informix.so" >> /etc/php/7.2/apache2/conf.d/pdo.ini
+RUN echo "extension=pdo_informix.so" >> /etc/php/7.2/apache2/conf.d/pdo_informix.ini
+RUN echo "extension=pdo_informix.so" >> /etc/php/7.2/cli/conf.d/pdo_informix.ini
 RUN sudo echo "sqlexec  9088/tcp\nsqlexec-ssl  9089/tcp" >> /etc/services
 
 EXPOSE 80
