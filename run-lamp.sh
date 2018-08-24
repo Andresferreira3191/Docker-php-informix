@@ -24,6 +24,7 @@ fi
 if [ $LOG_LEVEL != 'warn' ]; then
     /bin/sed -i "s/LogLevel\ warn/LogLevel\ ${LOG_LEVEL}/g" /etc/apache2/apache2.conf
 fi
+/bin/sed -i 's/ServerTokens\ OS/ServerTokens\ Prod/g' /etc/apache2/conf-enabled/security.conf
 /bin/sed -i 's/ServerTokens\ Full/ServerTokens\ Prod/g' /etc/apache2/conf-enabled/security.conf
 /bin/sed -i 's/ServerTokens\ Major/ServerTokens\ Prod/g' /etc/apache2/conf-enabled/security.conf
 /bin/sed -i 's/ServerTokens\ Minor/ServerTokens\ Prod/g' /etc/apache2/conf-enabled/security.conf
